@@ -1,0 +1,99 @@
+body {
+    background: rgb(2, 9, 20);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+    margin: 50px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+h1 {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 48pt;
+    clear: right;
+    line-height: 1;
+}
+
+p {
+    color: white;
+    font-size: 17pt;
+    clear: right;
+    line-height: 1;
+}
+.error {
+    color: white;
+    font-size: 10pt;
+    clear: right;
+    line-height: 1;
+}
+button {
+    color: white;
+    background: none;
+    width: 30px;
+    height: 30px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    padding: none;
+}
+
+input {
+    margin: 50px 0;
+    background: none;
+    color: white;
+    border-bottom: 1px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 200px;
+    height: 30px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(245, 245, 245);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px rgb(2, 9, 20) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+.images > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 1rem;
+    margin: 1px;
+    padding: 1px;
+}
+
+.images > ul > li {
+    border: transparent;
+    border-radius: 0.5rem;
+}
+
+.images > ul > li > figure {
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 0rem;
+    margin: 0;
+}
+.images > ul > li > figure > img {
+    width: 100%;
+    border-radius: 0.5rem;
+}

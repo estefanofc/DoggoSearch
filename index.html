@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search for doggos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Search Dog Breeds!</h1>
+        <p>
+            Get images from your favorite dog breeds, just type in the dog breed you're looking for in the search bar,
+            press the button and enjoy!
+        </p>
+        <div class="error" id="error-message"></div>
+        <div class="search">
+            <input type="text" placeholder="Enter your search here..." id="searchBar">
+            <button id="btnSearch" type="button" onclick="getDogs()"><i class="fa fa-search"></i></button>
+        </div>
+        <div class="images">
+            <ul>
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+
+                <li>
+                    <figure>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+                    </figure>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let searchBar = document.getElementById("searchBar");
+    let errorMessage = document.getElementById("error-message");
+    let list_items = document.getElementsByTagName('img');
+    searchBar.addEventListener("keyup", function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault;
+            document.getElementById("btnSearch").click();
+        }
+    });
+
+    function handleErrors(response) {
+        if (!response.ok) {
+            errorMessage.innerText = "Sorry, that breed isn't available at the moment";
+            for (let i = 0; i < list_items.length; i++) {
+                list_items[i].src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+            }
+        }
+        return response;
+    }
+
+    async function getDogs() {
+        if (errorMessage.innerText != '') {
+            errorMessage.innerText = '';
+        }
+        let input = searchBar.value
+        input = input.replace(/\s/g, '');
+        let response = await fetch(
+                `https://dog.ceo/api/breed/${input}/images/random/9`)
+            .then(handleErrors)
+            .then(function (res) {
+                return res.json();
+            }).catch((res) => console.log("Can’t access response. Blocked by browser. Error: " + res));
+        let images = response.message;
+
+        for (let i = 0; i < list_items.length; i++) {
+            list_items[i].src = images[i];
+        }
+        console.log(list_items);
+    }
+</script>
