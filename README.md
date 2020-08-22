@@ -1,2 +1,2 @@
 # Doggo Search
-A search engine that pulls images from the dog api
+A website that pulls images from the dog api
